@@ -2,5 +2,8 @@ import { expect, test } from '@playwright/test';
 
 test('index page has expected h1', async ({ page }) => {
 	await page.goto('/');
-	expect(await page.textContent('h1')).toBe('Welcome to SvelteKit');
+	const headerTextSelector = 'header h1';
+	expect((await page.textContent(headerTextSelector)).toLowerCase()).toContain('watch');
+	expect((await page.textContent(headerTextSelector)).toLowerCase()).toContain('shop');
+	expect((await page.textContent(headerTextSelector)).toLowerCase()).toContain('london');
 });
