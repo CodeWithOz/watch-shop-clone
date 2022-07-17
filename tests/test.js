@@ -9,9 +9,11 @@ test.describe('index page header', () => {
 		expect((await page.textContent(headerTextSelector)).toLowerCase()).toContain('london');
 	});
 
-	test('has hamburger and cart icons', async ({ page }) => {
+	test('has the correct icons', async ({ page }) => {
 		await page.goto('/');
 		expect(await page.locator('header .header__icon__cart img').count()).toEqual(1);
 		expect(await page.locator('header .header__icon__hamburger img').count()).toEqual(1);
+		expect(await page.locator('header .header__icon__phone').count()).toEqual(1);
+		expect(await page.locator('header .header__icon__phone img').count()).toEqual(1);
 	});
 });
