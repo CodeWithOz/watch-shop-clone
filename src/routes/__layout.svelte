@@ -38,5 +38,11 @@
         align-items: center;
         justify-content: center;
         font-weight: 100;
+        font-size: 2.5rem;
+    }
+
+    h1 span {
+        font-size: 1.5rem;
+        letter-spacing: 0.3rem;
     }
 </style>
