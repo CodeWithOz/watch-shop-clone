@@ -10,7 +10,7 @@
     <h1>Watch Shop<span class="city">LONDON</span></h1>
     <div class="rightSideIcons__container">
         <div class="header__icon header__icon__search"><img src="/search.svg" alt="search"></div>
-        <div class="header__icon header__searchBox"><input type="search" placeholder="search"></div>
+        <div class="header__searchBox"><input type="search" placeholder="search"></div>
         <div class="header__icon header__icon__heart"><img src="/heart.svg" alt="heart"></div>
         <div class="header__icon header__icon__account"><img src="/account.svg" alt="account"></div>
         <div class="header__icon header__icon__cart"><img src="/cart.svg" alt="cart"></div>
@@ -73,6 +73,14 @@
         text-decoration: none;
     }
 
+    .rightSideIcons__container {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .rightSideIcons__container > *:not(.header__icon__cart) {
+        display: none;
+    }
+
     .header__searchBox input {
         border-radius: var(--borderRadius);
     }
@@ -103,6 +111,53 @@
 
         .header__icon__hamburger {
             display: none;
+        }
+
+        .rightSideIcons__container {
+            display: grid;
+            grid-template-areas: "search searchBox searchBox searchBox searchBox searchBox heart account cart";
+            grid-template-rows: 1fr;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 10px;
+            align-items: center;
+            margin: 0 2rem;
+            max-width: 600px;
+            justify-self: flex-end;
+        }
+
+        .rightSideIcons__container > *:not(.header__icon__cart) {
+            display: unset;
+        }
+
+        .rightSideIcons__container .header__icon {
+            display: flex;
+            justify-self: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rightSideIcons__container .header__icon__search {
+            grid-area: search;
+        }
+
+        .rightSideIcons__container .header__searchBox {
+            grid-area: searchBox;
+        }
+
+        .rightSideIcons__container .header__searchBox input {
+            width: 100%;
+        }
+
+        .rightSideIcons__container .header__icon__heart {
+            grid-area: heart;
+        }
+
+        .rightSideIcons__container .header__icon__account {
+            grid-area: account;
+        }
+
+        .rightSideIcons__container .header__icon__cart {
+            grid-area: cart;
         }
 
         .header__searchBox input {
