@@ -13,7 +13,9 @@ test.describe('index page header', () => {
 		await page.goto('/');
 		expect(await page.locator('header .header__icon__cart img').count()).toEqual(1);
 		expect(await page.locator('header .header__icon__hamburger img').count()).toEqual(1);
-		expect(await page.locator('header .header__icon__phone').count()).toEqual(1);
 		expect(await page.locator('header .header__icon__phone img').count()).toEqual(1);
+		expect(await page.locator('header .header__icon__search img').count()).toEqual(1);
+		expect(await page.locator('header .header__icon__heart img').count()).toEqual(1);
+		expect(await page.locator('header .header__icon__account img').count()).toEqual(1);
 	});
 });
