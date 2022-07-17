@@ -26,6 +26,8 @@
         --outerPadLg: 5rem;
         --headerPhoneFontSize: 20px;
         --headerPhoneLineHeight: 26px;
+        --borderRadius: 8px;
+        --borderRadiusLg: 17px;
         display: grid;
         grid-template-columns: 1fr max-content 1fr;
         align-items: center;
@@ -51,16 +53,6 @@
         height: 100%;
     }
 
-    @media (min-width: 420px) {
-        header {
-            padding: var(--outerPad) var(--outerPadLg);
-        }
-
-        .header__icon__hamburger {
-            display: none;
-        }
-    }
-
     .header__icon__phone {
         display: flex;
         align-items: center;
@@ -81,10 +73,13 @@
         text-decoration: none;
     }
 
-    @media (max-width: 419px) {
-        .header__icon__phone {
-            display: none;
-        }
+    .header__searchBox input {
+        border-radius: var(--borderRadius);
+    }
+
+    .header__searchBox input::placeholder {
+        color: var(--site-gray-dark);
+        opacity: 0.33;
     }
 
     h1 {
@@ -99,5 +94,25 @@
     h1 span {
         font-size: 1.5rem;
         letter-spacing: 0.3rem;
+    }
+
+    @media (min-width: 420px) {
+        header {
+            padding: var(--outerPad) var(--outerPadLg);
+        }
+
+        .header__icon__hamburger {
+            display: none;
+        }
+
+        .header__searchBox input {
+            border-radius: var(--borderRadiusLg);
+        }
+    }
+
+    @media (max-width: 419px) {
+        .header__icon__phone {
+            display: none;
+        }
     }
 </style>
