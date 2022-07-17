@@ -1,3 +1,7 @@
+<script>
+    let searching = false;
+</script>
+
 <svelte:head>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -8,8 +12,8 @@
     <div class="header__icon header__icon__phone"><a href="tel:07987654321">07987654321<img src="/phone.svg" alt="phone"></a></div>
     <div class="header__icon header__icon__hamburger"><img src="/menu-1.svg" alt="hamburger" srcset="menu-1.svg 1x, menu-1@2x.svg 2x"></div>
     <h1>Watch Shop<span class="city">LONDON</span></h1>
-    <div class="rightSideIcons__container">
-        <div class="header__icon header__icon__search"><img src="/search.svg" alt="search"></div>
+    <div class="rightSideIcons__container {searching ? 'searching' : ''}">
+        <div class="header__icon header__icon__search" on:click|preventDefault={() => searching = !searching}><img src="/search.svg" alt="search"></div>
         <div class="header__searchBox"><input type="search" placeholder="search"></div>
         <div class="header__icon header__icon__heart"><img src="/heart.svg" alt="heart"></div>
         <div class="header__icon header__icon__account"><img src="/account.svg" alt="account"></div>
@@ -115,14 +119,17 @@
 
         .rightSideIcons__container {
             display: grid;
-            grid-template-areas: "search searchBox searchBox searchBox searchBox searchBox heart account cart";
+            grid-template-areas: "search heart account cart";
             grid-template-rows: 1fr;
-            grid-template-columns: repeat(9, 1fr);
             gap: 10px;
             align-items: center;
             margin: 0 2rem;
             max-width: 600px;
             justify-self: flex-end;
+        }
+
+        .rightSideIcons__container.searching {
+            grid-template-areas: "search searchBox searchBox searchBox searchBox searchBox heart account cart";
         }
 
         .rightSideIcons__container > *:not(.header__icon__cart) {
@@ -141,6 +148,11 @@
         }
 
         .rightSideIcons__container .header__searchBox {
+            display: none;
+        }
+
+        .rightSideIcons__container.searching .header__searchBox {
+            display: unset;
             grid-area: searchBox;
         }
 
