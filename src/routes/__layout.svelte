@@ -17,16 +17,24 @@
     header {
         --iconSize: 1.75rem;
         --outerPad: 1.5rem;
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
         align-items: center;
         padding: var(--outerPad);
         background-color: var(--site-gray-light-1);
     }
 
-    .header__icon {
+    .header__icon:not(.header__icon__phone) {
         width: var(--iconSize);
         height: var(--iconSize);
+    }
+
+    .header__icon__hamburger {
+        justify-self: flex-start;
+    }
+
+    .header__icon__cart {
+        justify-self: flex-end;
     }
 
     .header__icon img {
@@ -36,6 +44,26 @@
 
     @media (min-width: 420px) {
         .header__icon__hamburger {
+            display: none;
+        }
+    }
+
+    .header__icon__phone {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2em;
+    }
+
+    .header__icon__phone a {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 10px;
+        align-items: center;
+    }
+
+    @media (max-width: 419px) {
+        .header__icon__phone {
             display: none;
         }
     }
