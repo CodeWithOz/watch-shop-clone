@@ -5,6 +5,7 @@
 </svelte:head>
 
 <header>
+    <div class="header__icon header__icon__phone"><a href="tel:07987654321">07987654321<img src="/phone.svg" alt="phone"></a></div>
     <div class="header__icon header__icon__hamburger"><img src="/menu-1.svg" alt="hamburger" srcset="menu-1.svg 1x, menu-1@2x.svg 2x"></div>
     <h1>Watch Shop<span class="city">LONDON</span></h1>
     <div class="header__icon header__icon__cart"><img src="/cart.svg" alt="cart"></div>
