@@ -18,4 +18,9 @@ test.describe('index page header', () => {
 		expect(await page.locator('header .header__icon__heart img').count()).toEqual(1);
 		expect(await page.locator('header .header__icon__account img').count()).toEqual(1);
 	});
+
+	test('has a search box', async ({ page }) => {
+		await page.goto('/');
+		expect(await page.locator('header header__searchBox input[type="text"]').count()).toEqual(1);
+	});
 });
