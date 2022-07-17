@@ -5,9 +5,9 @@
 </svelte:head>
 
 <header>
-    <div class="header__icon"><img src="/menu-1.svg" alt="hamburger" srcset="menu-1.svg 1x, menu-1@2x.svg 2x"></div>
+    <div class="header__icon header__icon__hamburger"><img src="/menu-1.svg" alt="hamburger" srcset="menu-1.svg 1x, menu-1@2x.svg 2x"></div>
     <h1>Watch Shop<span class="city">LONDON</span></h1>
-    <div class="header__icon"><img src="/cart.svg" alt="cart"></div>
+    <div class="header__icon header__icon__cart"><img src="/cart.svg" alt="cart"></div>
 </header>
 
 <slot></slot>
@@ -31,6 +31,12 @@
     .header__icon img {
         width: 100%;
         height: 100%;
+    }
+
+    @media (min-width: 420px) {
+        .header__icon__hamburger {
+            display: none;
+        }
     }
 
     h1 {
