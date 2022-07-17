@@ -18,6 +18,8 @@
         --iconSize: 1.75rem;
         --outerPad: 1.5rem;
         --outerPadLg: 5rem;
+        --headerPhoneFontSize: 20px;
+        --headerPhoneLineHeight: 26px;
         display: grid;
         grid-template-columns: 1fr max-content 1fr;
         align-items: center;
@@ -64,6 +66,13 @@
         grid-template-columns: max-content 1fr;
         gap: 10px;
         align-items: center;
+        text-decoration: none;
+        font-size: var(--headerPhoneFontSize);
+        line-height: var(--headerPhoneLineHeight);
+    }
+
+    .header__icon__phone a:visited {
+        text-decoration: none;
     }
 
     @media (max-width: 419px) {

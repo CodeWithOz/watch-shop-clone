@@ -9,6 +9,7 @@
 * {
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
+    color: var(--site-gray-dark);
 }
 
 body {
