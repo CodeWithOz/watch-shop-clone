@@ -17,6 +17,7 @@
     header {
         --iconSize: 1.75rem;
         --outerPad: 1.5rem;
+        --outerPadLg: 5rem;
         display: grid;
         grid-template-columns: 1fr max-content 1fr;
         align-items: center;
@@ -43,6 +44,10 @@
     }
 
     @media (min-width: 420px) {
+        header {
+            padding: var(--outerPad) var(--outerPadLg);
+        }
+
         .header__icon__hamburger {
             display: none;
         }
@@ -50,7 +55,6 @@
 
     .header__icon__phone {
         display: flex;
-        justify-content: center;
         align-items: center;
         padding: 2em;
     }
