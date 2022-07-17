@@ -10,6 +10,7 @@
     <h1>Watch Shop<span class="city">LONDON</span></h1>
     <div class="rightSideIcons__container">
         <div class="header__icon header__icon__search"><img src="/search.svg" alt="search"></div>
+        <div class="header__icon header__searchBox"><input type="search" placeholder="search"></div>
         <div class="header__icon header__icon__heart"><img src="/heart.svg" alt="heart"></div>
         <div class="header__icon header__icon__account"><img src="/account.svg" alt="account"></div>
         <div class="header__icon header__icon__cart"><img src="/cart.svg" alt="cart"></div>
