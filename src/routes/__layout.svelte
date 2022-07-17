@@ -20,6 +20,7 @@
         justify-content: space-between;
         align-items: center;
         padding: var(--outerPad);
+        background-color: var(--site-gray-light-1);
     }
 
     .header__icon {
