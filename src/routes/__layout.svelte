@@ -1,5 +1,12 @@
 <script>
+    import LanguageSelector from '$lib/HeaderComponents/languageSelector.svelte';
     let searching = false;
+    /**
+     * @type {Number}
+     */
+    let viewportWidth;
+    // TODO: get the breakpoints from the store
+    const viewportDims = { width: 420, height: 820 };
 </script>
 
 <svelte:head>
@@ -8,7 +15,14 @@
     <link href="/global.css" rel="stylesheet">
 </svelte:head>
 
+<svelte:window bind:innerWidth={viewportWidth}/>
+
 <header>
+    {#if viewportWidth > viewportDims.width}
+        <div class="languageSelector__container">
+            <LanguageSelector />
+        </div>
+    {/if}
     <div class="header__icon header__icon__phone"><a href="tel:07987654321">07987654321<img src="/phone.svg" alt="phone"></a></div>
     <div class="header__icon header__icon__hamburger"><img src="/menu-1.svg" alt="hamburger" srcset="menu-1.svg 1x, menu-1@2x.svg 2x"></div>
     <h1>Watch Shop<span class="city">LONDON</span></h1>
@@ -34,9 +48,14 @@
         --borderRadiusLg: 17px;
         display: grid;
         grid-template-columns: 1fr max-content 1fr;
+        grid-template-rows: 1fr;
         align-items: center;
         padding: var(--outerPad);
         background-color: var(--site-gray-light-1);
+    }
+
+    .languageSelector__container {
+        grid-area: 1 / 1 / 2 / 4;
     }
 
     .header__icon:not(.header__icon__phone) {
