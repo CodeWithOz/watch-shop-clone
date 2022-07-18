@@ -19,20 +19,22 @@
 
 <header>
     {#if viewportWidth > viewportDims.width}
-        <div class="languageSelector__container">
+        <section class="header__languageSelector__container">
             <LanguageSelector />
-        </div>
+        </section>
     {/if}
-    <div class="header__icon header__icon__phone"><a href="tel:07987654321">07987654321<img src="/phone.svg" alt="phone"></a></div>
-    <div class="header__icon header__icon__hamburger"><img src="/menu-1.svg" alt="hamburger" srcset="menu-1.svg 1x, menu-1@2x.svg 2x"></div>
-    <h1>Watch Shop<span class="city">LONDON</span></h1>
-    <div class="rightSideIcons__container {searching ? 'searching' : ''}">
-        <div class="header__icon header__icon__search" on:click|preventDefault={() => searching = !searching}><img src="/search.svg" alt="search"></div>
-        <div class="header__searchBox"><input type="search" placeholder="search"></div>
-        <div class="header__icon header__icon__heart"><img src="/heart.svg" alt="heart"></div>
-        <div class="header__icon header__icon__account"><img src="/account.svg" alt="account"></div>
-        <div class="header__icon header__icon__cart"><img src="/cart.svg" alt="cart"></div>
-    </div>
+    <section class="header__main">
+        <div class="header__icon header__icon__phone"><a href="tel:07987654321">07987654321<img src="/phone.svg" alt="phone"></a></div>
+        <div class="header__icon header__icon__hamburger"><img src="/menu-1.svg" alt="hamburger" srcset="menu-1.svg 1x, menu-1@2x.svg 2x"></div>
+        <h1>Watch Shop<span class="city">LONDON</span></h1>
+        <div class="rightSideIcons__container {searching ? 'searching' : ''}">
+            <div class="header__icon header__icon__search" on:click|preventDefault={() => searching = !searching}><img src="/search.svg" alt="search"></div>
+            <div class="header__searchBox"><input type="search" placeholder="search"></div>
+            <div class="header__icon header__icon__heart"><img src="/heart.svg" alt="heart"></div>
+            <div class="header__icon header__icon__account"><img src="/account.svg" alt="account"></div>
+            <div class="header__icon header__icon__cart"><img src="/cart.svg" alt="cart"></div>
+        </div>
+    </section>
 </header>
 
 <slot></slot>
@@ -46,16 +48,15 @@
         --headerPhoneLineHeight: 26px;
         --borderRadius: 8px;
         --borderRadiusLg: 17px;
+    }
+
+    .header__main {
         display: grid;
         grid-template-columns: 1fr max-content 1fr;
         grid-template-rows: 1fr;
         align-items: center;
         padding: var(--outerPad);
         background-color: var(--site-gray-light-1);
-    }
-
-    .languageSelector__container {
-        grid-area: 1 / 1 / 2 / 4;
     }
 
     .header__icon:not(.header__icon__phone) {
@@ -128,7 +129,7 @@
     }
 
     @media (min-width: 420px) {
-        header {
+        .header__main {
             padding: var(--outerPad) var(--outerPadLg);
         }
 
@@ -142,7 +143,6 @@
             grid-template-rows: 1fr;
             gap: 10px;
             align-items: center;
-            margin: 0 2rem;
             max-width: 600px;
             justify-self: flex-end;
         }
