@@ -1,12 +1,11 @@
 <script>
     import LanguageSelector from '$lib/HeaderComponents/languageSelector.svelte';
+    import { viewportDims } from '$lib/stores/index';
     let searching = false;
     /**
      * @type {Number}
      */
     let viewportWidth;
-    // TODO: get the breakpoints from the store
-    const viewportDims = { width: 420, height: 820 };
 </script>
 
 <svelte:head>
@@ -18,7 +17,7 @@
 <svelte:window bind:innerWidth={viewportWidth}/>
 
 <header>
-    {#if viewportWidth > viewportDims.width}
+    {#if viewportWidth >= $viewportDims.tablet.width}
         <section class="header__languageSelector__container">
             <LanguageSelector />
         </section>
