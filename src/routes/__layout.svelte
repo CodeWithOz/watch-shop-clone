@@ -17,11 +17,13 @@
 <svelte:window bind:innerWidth={viewportWidth}/>
 
 <header>
-    {#if viewportWidth >= $viewportDims.tablet.width}
-        <section class="header__languageSelector__container">
+    <section class="header__languageSelector__container">
+        {#if viewportWidth >= $viewportDims.tablet.width}
             <LanguageSelector />
-        </section>
-    {/if}
+        {:else}
+            <section class="header__languageSelector__placeholder"></section>
+        {/if}
+    </section>
     <section class="header__main">
         <div class="header__icon header__icon__phone"><a href="tel:07987654321">07987654321<img src="/phone.svg" alt="phone"></a></div>
         <div class="header__icon header__icon__hamburger"><img src="/menu-1.svg" alt="hamburger" srcset="menu-1.svg 1x, menu-1@2x.svg 2x"></div>
@@ -47,6 +49,10 @@
         --headerPhoneLineHeight: 26px;
         --borderRadius: 8px;
         --borderRadiusLg: 17px;
+    }
+
+    .header__languageSelector__placeholder {
+        display: none;
     }
 
     .header__main {
@@ -128,6 +134,13 @@
 
     /* tablet */
     @media (min-width: 768px) {
+        .header__languageSelector__placeholder {
+            display: block;
+            /* use the same dimensions as the actual language selector to prevent layout shift */
+            height: calc(0.25rem * 2 + 1.2rem);
+            width: 100%;
+        }
+
         .header__main {
             padding: var(--outerPad) var(--outerPadLg);
         }
