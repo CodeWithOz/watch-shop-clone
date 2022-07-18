@@ -42,7 +42,7 @@
     header {
         --iconSize: 1.75rem;
         --outerPad: 1.5rem;
-        --outerPadLg: 5rem;
+        --outerPadLg: 2rem;
         --headerPhoneFontSize: 20px;
         --headerPhoneLineHeight: 26px;
         --borderRadius: 8px;
@@ -79,7 +79,6 @@
     .header__icon__phone {
         display: flex;
         align-items: center;
-        padding: 2em;
     }
 
     .header__icon__phone a {
@@ -127,7 +126,8 @@
         letter-spacing: 0.3rem;
     }
 
-    @media (min-width: 420px) {
+    /* tablet */
+    @media (min-width: 768px) {
         .header__main {
             padding: var(--outerPad) var(--outerPadLg);
         }
@@ -140,9 +140,9 @@
             display: grid;
             grid-template-areas: "search heart account cart";
             grid-template-rows: 1fr;
-            gap: 10px;
+            gap: 5px;
             align-items: center;
-            max-width: 600px;
+            max-width: 200px;
             justify-self: flex-end;
         }
 
@@ -195,9 +195,35 @@
         }
     }
 
-    @media (max-width: 419px) {
+    @media (max-width: 767px) {
         .header__icon__phone {
             display: none;
+        }
+    }
+
+    /* laptop */
+    @media (min-width: 1024px) {
+        header {
+            --outerPadLg: 3rem;
+        }
+
+        .rightSideIcons__container {
+            gap: 10px;
+            max-width: 300px;
+        }
+    }
+
+    /* laptop large */
+    @media (min-width: 1440px) {
+        header {
+            --outerPadLg: 4rem;
+        }
+    }
+
+    /* 4K */
+    @media (min-width: 2560px) {
+        header {
+            --outerPadLg: 5rem;
         }
     }
 </style>
