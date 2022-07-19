@@ -30,7 +30,7 @@
         <h1>Watch Shop<span class="city">LONDON</span></h1>
         <div class="rightSideIcons__container">
             <div class="header__searchContainer">
-                <div class="header__icon header__icon__search" on:click|preventDefault={() => searching = !searching}><img src="/search.svg" alt="search"></div>
+                <button class="header__icon header__icon__search" on:click|preventDefault={() => searching = !searching}><img src="/search.svg" alt="search"></button>
                 <div class="header__searchBox {searching ? 'searching' : ''}"><input type="search" placeholder="search"></div>
             </div>
             <div class="header__icon header__icon__heart"><img src="/heart.svg" alt="heart"></div>
@@ -109,6 +109,17 @@
     }
     .rightSideIcons__container > *:not(.header__icon__cart) {
         display: none;
+    }
+
+    .header__icon__search {
+        border: none;
+        outline: none;
+        background-color: inherit;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .header__searchBox {
