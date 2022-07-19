@@ -192,7 +192,7 @@
             align-items: center;
         }
 
-        .rightSideIcons__container .header__icon__search {
+        .rightSideIcons__container .header__searchContainer {
             grid-area: search;
         }
 
