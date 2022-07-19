@@ -28,9 +28,11 @@
         <div class="header__icon header__icon__phone"><a href="tel:07987654321">07987654321<img src="/phone.svg" alt="phone"></a></div>
         <div class="header__icon header__icon__hamburger"><img src="/menu-1.svg" alt="hamburger" srcset="menu-1.svg 1x, menu-1@2x.svg 2x"></div>
         <h1>Watch Shop<span class="city">LONDON</span></h1>
-        <div class="rightSideIcons__container {searching ? 'searching' : ''}">
-            <div class="header__icon header__icon__search" on:click|preventDefault={() => searching = !searching}><img src="/search.svg" alt="search"></div>
-            <div class="header__searchBox"><input type="search" placeholder="search"></div>
+        <div class="rightSideIcons__container">
+            <div class="header__searchContainer">
+                <div class="header__icon header__icon__search" on:click|preventDefault={() => searching = !searching}><img src="/search.svg" alt="search"></div>
+                <div class="header__searchBox {searching ? 'searching' : ''}"><input type="search" placeholder="search"></div>
+            </div>
             <div class="header__icon header__icon__heart"><img src="/heart.svg" alt="heart"></div>
             <div class="header__icon header__icon__account"><img src="/account.svg" alt="account"></div>
             <div class="header__icon header__icon__cart"><img src="/cart.svg" alt="cart"></div>
@@ -109,8 +111,28 @@
         display: none;
     }
 
+    .header__searchBox {
+        margin-left: 0;
+        transition: all 0.75s;
+    }
+
     .header__searchBox input {
+        --verticalPad: 0.25rem;
         border-radius: var(--borderRadius);
+        margin-left: 0;
+        border: none;
+        width: 0;
+        padding: var(--verticalPad) 0;
+        transition: all 0.75s;
+    }
+
+    .header__searchBox.searching {
+        margin-left: 0.5rem;
+    }
+
+    .header__searchBox.searching input {
+        padding: var(--verticalPad) 0.25rem;
+        width: 100%;
     }
 
     .header__searchBox input::placeholder {
@@ -159,10 +181,6 @@
             justify-self: flex-end;
         }
 
-        .rightSideIcons__container.searching {
-            grid-template-areas: "search searchBox searchBox searchBox searchBox searchBox heart account cart";
-        }
-
         .rightSideIcons__container > *:not(.header__icon__cart) {
             display: unset;
         }
@@ -176,19 +194,6 @@
 
         .rightSideIcons__container .header__icon__search {
             grid-area: search;
-        }
-
-        .rightSideIcons__container .header__searchBox {
-            display: none;
-        }
-
-        .rightSideIcons__container.searching .header__searchBox {
-            display: unset;
-            grid-area: searchBox;
-        }
-
-        .rightSideIcons__container .header__searchBox input {
-            width: 100%;
         }
 
         .rightSideIcons__container .header__icon__heart {
@@ -205,6 +210,13 @@
 
         .header__searchBox input {
             border-radius: var(--borderRadiusLg);
+        }
+
+        /* double up the selector for extra specificity */
+        .header__searchContainer.header__searchContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
     }
 
