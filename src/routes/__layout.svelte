@@ -29,15 +29,17 @@
         <div class="header__icon header__icon__hamburger"><img src="/menu-1.svg" alt="hamburger" srcset="menu-1.svg 1x, menu-1@2x.svg 2x"></div>
         <h1>Watch Shop<span class="city">LONDON</span></h1>
         <div class="rightSideIcons__container">
-            <div class="header__searchContainer">
+            <div class="header__searchContainer {searching ? 'searching' : ''}">
                 <button class="header__icon header__icon__search" on:click|preventDefault={() => searching = !searching}><img src="/search.svg" alt="search"></button>
-                <div class="header__searchBox {searching ? 'searching' : ''}"><input type="search" placeholder="search"></div>
+                <!-- <div class="header__searchBox {searching ? 'searching' : ''}"><input type="search" placeholder="search"></div> -->
+                <div class="header__searchBox"><input type="search" placeholder="search"></div>
             </div>
             <div class="header__icon header__icon__heart"><img src="/heart.svg" alt="heart"></div>
             <div class="header__icon header__icon__account"><img src="/account.svg" alt="account"></div>
             <div class="header__icon header__icon__cart"><img src="/cart.svg" alt="cart"></div>
         </div>
     </section>
+    <!-- TODO: add the nav, preferably with a separate component each for mobile and larger -->
 </header>
 
 <slot></slot>
@@ -51,6 +53,9 @@
         --headerPhoneLineHeight: 26px;
         --borderRadius: 8px;
         --borderRadiusLg: 17px;
+        --searchAnimDur: 0.75s;
+        --rightSideIconsMaxWidth: 15rem;
+        --rightSideIconsGap: 5px;
     }
 
     .header__languageSelector__placeholder {
@@ -111,6 +116,11 @@
         display: none;
     }
 
+    .rightSideIcons__container .header__searchContainer {
+        width: 100%;
+        transition: max-width var(--searchAnimDur);
+    }
+
     .header__icon__search {
         border: none;
         outline: none;
@@ -118,13 +128,14 @@
         padding: 0;
         margin: 0;
         display: flex;
+        flex-shrink: 0;
         align-items: center;
         justify-content: center;
     }
 
     .header__searchBox {
         margin-left: 0;
-        transition: all 0.75s;
+        transition: all var(--searchAnimDur);
     }
 
     .header__searchBox input {
@@ -132,18 +143,17 @@
         border-radius: var(--borderRadius);
         margin-left: 0;
         border: none;
-        width: 0;
-        padding: var(--verticalPad) 0;
-        transition: all 0.75s;
-    }
-
-    .header__searchBox.searching {
-        margin-left: 0.5rem;
-    }
-
-    .header__searchBox.searching input {
-        padding: var(--verticalPad) 0.25rem;
         width: 100%;
+        padding: var(--verticalPad) 0;
+        transition: all var(--searchAnimDur);
+    }
+
+    .header__searchContainer.searching .header__searchBox {
+        margin-left: var(--rightSideIconsGap);
+    }
+
+    .header__searchContainer.searching .header__searchBox input {
+        padding: var(--verticalPad) 0.25rem;
     }
 
     .header__searchBox input::placeholder {
@@ -186,9 +196,9 @@
             display: grid;
             grid-template-areas: "search heart account cart";
             grid-template-rows: 1fr;
-            gap: 5px;
+            gap: var(--rightSideIconsGap);
             align-items: center;
-            max-width: 200px;
+            max-width: var(--rightSideIconsMaxWidth);
             justify-self: flex-end;
         }
 
@@ -228,6 +238,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: var(--iconSize);
+        }
+
+        .header__searchContainer.header__searchContainer.searching {
+            /* subtract the width of the icons and gap */
+            max-width: calc(var(--rightSideIconsMaxWidth) - (var(--iconSize) + var(--rightSideIconsGap)) * 4);
         }
     }
 
@@ -244,8 +260,8 @@
         }
 
         .rightSideIcons__container {
-            gap: 10px;
-            max-width: 300px;
+            --rightSideIconsMaxWidth: 19rem;
+            --rightSideIconsGap: 10px;
         }
     }
 
