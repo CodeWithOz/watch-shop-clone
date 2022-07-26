@@ -53,7 +53,7 @@
         --headerPhoneLineHeight: 26px;
         --borderRadius: 8px;
         --borderRadiusLg: 17px;
-        --searchAnimDur: 0.75s;
+        --searchAnimDur: 0.5s;
         --rightSideIconsMaxWidth: 15rem;
         --rightSideIconsGap: 5px;
     }
@@ -276,6 +276,12 @@
     @media (min-width: 2560px) {
         header {
             --outerPadLg: 5rem;
+        }
+    }
+
+    @media (prefers-reduced-motion) {
+        header {
+            --searchAnimDur: 0s;
         }
     }
 </style>
